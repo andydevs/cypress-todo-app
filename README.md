@@ -3,7 +3,7 @@ Cypress Todo App
 
 ![Screenshot](screenshot.png)
 
-Simple todo app used to test cypress testing
+Simple todo app used to demo cypress testing
 
 Running Cypress
 -----------------------------------------------------------------------
