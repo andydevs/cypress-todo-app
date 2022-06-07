@@ -1,5 +1,12 @@
+/**
+ * Example app for testing cypress
+ * 
+ * @author  Anshul Kharbanda
+ * @created 6 - 6 - 2022
+ */
 const path = require('path')
 
+// Webpack config
 module.exports = {
     mode: 'development',
     entry: './app/index.js',
