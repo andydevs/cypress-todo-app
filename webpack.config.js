@@ -13,8 +13,7 @@ module.exports = {
     devServer: {
         static: path.join(__dirname, 'public'),
         compress: true,
-        port: 8080,
-        open: true
+        port: 8080
     },
     output: {
         path: path.resolve(__dirname, 'public'),

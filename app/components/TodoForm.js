@@ -27,12 +27,15 @@ export function TodoForm() {
     // JSX
     return (
         <Stack direction="horizontal" gap={3}>
-            <Form.Control 
+            <Form.Control
+                data-testhandle="todo-form-text"
                 type="text" 
                 onChange={handleChange} 
                 value={text} 
                 placeholder="Todo text..."/>
-            <Button onClick={handleSubmit}>Create</Button>
+            <Button
+                data-testhandle="todo-form-create" 
+                onClick={handleSubmit}>Create</Button>
         </Stack>
     )
 }
