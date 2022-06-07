@@ -58,5 +58,7 @@
         ".yarn/build-state.yml": true,
         ".yarn/install-state.gz": true,
         "**/.pnp.*": true
-    }
+    },
+    "frontMatter.framework.id": "gatsby",
+    "frontMatter.content.publicFolder": "static"
 }
