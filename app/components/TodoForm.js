@@ -20,7 +20,7 @@ export function TodoForm() {
     // Handle create new todo
     const dispatch = useDispatch()
     const handleSubmit = () => {
-        dispatch(createTodo(text))
+        if (text !== '') dispatch(createTodo(text))
         setText('')
     }
     const handleCheckEnter = e => {

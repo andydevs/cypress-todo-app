@@ -1,2 +1,3 @@
-# cypress-todo-app
- Simple todo app used to test cypress testing
+Cypress Todo App
+
+Simple todo app used to test cypress testing

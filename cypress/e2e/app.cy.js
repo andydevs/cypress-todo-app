@@ -76,4 +76,14 @@ describe('Application', () => {
         cy.testElemContains('todo-item', todo).should('exist')
         cy.testElemGet('todo-form-text').invoke('val').should('be.empty')
     })
+
+    it('won\'t create a todo if the input area is empty', () => {
+        // Submit empty todo
+        cy.visit('/')
+        cy.testElemGet('todo-form-text').clear()
+        cy.testElemGet('todo-form-create').click()
+
+        // Check if there are no elements in todo list
+        cy.testElemGet('todo-item').should('not.exist')
+    })
 })
