@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// The best practices say that we should locate elements in cypress 
+// using a data attribute like 'data-cy' or 'data-test', as these won't 
+// be subject to change with css styling or javascript app logic. Here 
+// I'm using 'data-cy' and I've written this cypress command to act as 
+// a shortcut for finding an element by it's 'data-cy' property value
+// See https://docs.cypress.io/guides/references/best-practices#Selecting-Elements
+Cypress.Commands.add('testElemGet', id => cy.get(`[data-cy="${id}"]`))
+Cypress.Commands.add('testElemContains', (id, text) => cy.contains(`[data-cy=${id}]`, text))

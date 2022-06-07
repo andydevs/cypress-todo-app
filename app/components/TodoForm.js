@@ -23,6 +23,11 @@ export function TodoForm() {
         dispatch(createTodo(text))
         setText('')
     }
+    const handleCheckEnter = e => {
+        if (e.key === 'Enter') {
+            handleSubmit()
+        }
+    }
 
     // JSX
     return (
@@ -30,12 +35,15 @@ export function TodoForm() {
             <Form.Control
                 data-cy="todo-form-text"
                 type="text" 
-                onChange={handleChange} 
-                value={text} 
-                placeholder="Todo text..."/>
+                value={text}
+                placeholder="Todo text..."
+                onChange={handleChange}
+                onKeyDown={handleCheckEnter}/>
             <Button
                 data-cy="todo-form-create" 
-                onClick={handleSubmit}>Create</Button>
+                onClick={handleSubmit}>
+                Create
+            </Button>
         </Stack>
     )
 }
