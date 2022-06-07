@@ -28,13 +28,13 @@ export function TodoForm() {
     return (
         <Stack direction="horizontal" gap={3}>
             <Form.Control
-                data-testhandle="todo-form-text"
+                data-cy="todo-form-text"
                 type="text" 
                 onChange={handleChange} 
                 value={text} 
                 placeholder="Todo text..."/>
             <Button
-                data-testhandle="todo-form-create" 
+                data-cy="todo-form-create" 
                 onClick={handleSubmit}>Create</Button>
         </Stack>
     )

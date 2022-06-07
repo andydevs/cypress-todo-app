@@ -19,12 +19,10 @@ export function Todo({ index, text }) {
 
     // JSX
     return (
-        <ListGroup.Item data-testhandle="todo-item">
+        <ListGroup.Item data-cy="todo-item">
             <Stack direction="horizontal">
                 <span className="me-auto">{ text }</span>
-                <CloseButton 
-                    data-testhandle="todo-delete"
-                    onClick={handleDelete}/>
+                <CloseButton data-cy="todo-delete" onClick={handleDelete}/>
             </Stack>
         </ListGroup.Item>
     )

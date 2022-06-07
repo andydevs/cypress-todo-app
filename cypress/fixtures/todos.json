@@ -1,5 +1,8 @@
-[
-    "Do a thing",
-    "Do another thing",
-    "Do a third thing"
-]
+{
+    "todos": [
+        "Do a thing",
+        "Do another thing",
+        "Do a third thing"
+    ],
+    "deleteIndex": 1
+}

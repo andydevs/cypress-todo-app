@@ -18,7 +18,7 @@ export function TodoList() {
 
     // JSX
     return (
-        <ListGroup data-testhandle="todo-list">
+        <ListGroup data-cy="todo-list">
             { todos.map((text, index) => (
                 <Todo text={text} index={index} key={index}/>
             ))}
