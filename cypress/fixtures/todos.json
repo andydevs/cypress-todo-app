@@ -4,5 +4,15 @@
         "Do another thing",
         "Do a third thing"
     ],
-    "deleteIndex": 1
+    "deleteIndex": 1,
+    "priorities": [
+        {
+            "index": 1,
+            "priority": 3
+        },
+        {
+            "index": 0,
+            "priority": 2
+        }
+    ]
 }

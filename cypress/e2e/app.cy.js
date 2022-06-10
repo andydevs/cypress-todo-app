@@ -6,10 +6,14 @@
  */
 import data from '../fixtures/todos.json';
 
+// Priority information
+const DEFAULT_PRIORITY = 0
+const PRIORITY_SETTINGS = [0, 1, 2, 3]
+
 // For info on the "testElemGet" and "testElemContains" 
 // functions look at cypress/support/commands.js
 
-describe('Application', () => {
+describe('Creating and Deleting Todos', () => {
     it('creates todos', () => {
         // Create todo
         cy.visit('/')
@@ -48,7 +52,9 @@ describe('Application', () => {
         // Deleted
         cy.testElemContains('todo-item', data.todos[data.deleteIndex]).should('not.exist')
     })
+})
 
+describe('Todo Input Form', () => {
     it('empties todo input when creating todos', () => {
         // Use todo form
         cy.visit('/')
@@ -85,5 +91,73 @@ describe('Application', () => {
 
         // Check if there are no elements in todo list
         cy.testElemGet('todo-item').should('not.exist')
+    })
+})
+
+describe('Todo Priorities', () => {
+    it('can set priority of todos', () => {
+        // Create some todos
+        cy.visit('/')
+        for (const todo of data.todos) {
+            cy.testElemGet('todo-form-text').type(todo)
+            cy.testElemGet('todo-form-create').click()
+        }
+
+        // Set priority of todo
+        for (const priority of data.priorities) {
+            // Find right priority button and click it
+            cy.testElemGet('todo-item')
+              .eq(priority.index)
+              .testElemFind('todo-item-priorities')
+              .testElemFind(`priority-${priority.priority}`)
+              .click()
+        }
+
+        // Check if each priority is represented properly
+        for (const priority of data.priorities) {
+            // Get priority bar and make sure only the selected priority is active
+            cy.testElemGet('todo-item')
+              .eq(priority.index)
+              .testElemFind('todo-item-priorities')
+              .within(() => {
+                  for (const number of PRIORITY_SETTINGS) {
+                    if (number === priority.priority) {
+                        cy.testElemGet(`priority-${number}`)
+                          .should('have.class', 'active')
+                    }
+                    else {
+                        cy.testElemGet(`priority-${number}`)
+                          .should('not.have.class', 'active')
+                    }
+                  }
+              })
+        }
+    })
+
+    it('sets default priority for each todo to 0', () => {
+        // Create some todos
+        cy.visit('/')
+        for (const todo of data.todos) {
+            cy.testElemGet('todo-form-text').type(todo)
+            cy.testElemGet('todo-form-create').click()
+        }
+
+        // Check if each todo's priority is set to 0
+        cy.testElemGet('todo-item').each(($todo, index, $list) => {
+            cy.wrap($todo)
+              .testElemFind('todo-item-priorities')
+              .within(() => {
+                for (const number of PRIORITY_SETTINGS) {
+                    if (number === DEFAULT_PRIORITY) {
+                        cy.testElemGet(`priority-${number}`)
+                          .should('have.class', 'active')
+                    }
+                    else {
+                        cy.testElemGet(`priority-${number}`)
+                          .should('not.have.class', 'active')
+                    }
+                  }
+              })
+        })
     })
 })

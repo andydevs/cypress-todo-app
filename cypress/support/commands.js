@@ -32,3 +32,4 @@
 // See https://docs.cypress.io/guides/references/best-practices#Selecting-Elements
 Cypress.Commands.add('testElemGet', id => cy.get(`[data-cy="${id}"]`))
 Cypress.Commands.add('testElemContains', (id, text) => cy.contains(`[data-cy=${id}]`, text))
+Cypress.Commands.add('testElemFind', { prevSubject: 'element' }, (subject, id) => subject.find(`[data-cy=${id}]`))

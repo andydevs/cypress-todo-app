@@ -8,6 +8,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ListGroup, Stack, CloseButton } from 'react-bootstrap';
 import { deleteTodo } from '../store';
+import { Priority } from './Priorities';
 
 /**
  * Todo component in todo list
@@ -22,6 +23,7 @@ export function Todo({ index, text }) {
         <ListGroup.Item data-cy="todo-item">
             <Stack direction="horizontal">
                 <span className="me-auto">{ text }</span>
+                <Priority index={index}/>
                 <CloseButton data-cy="todo-delete" onClick={handleDelete}/>
             </Stack>
         </ListGroup.Item>
